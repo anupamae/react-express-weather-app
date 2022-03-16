@@ -1,0 +1,20 @@
+.header {
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+.header__h1 {
+  text-align: center;
+}
+
+.footer {
+  padding-top: 2em;
+  padding-bottom: 0.2em;
+}
+
+.footer__p {
+  color: #505050;
+  font-size: smaller;
+  font-weight: bolder;
+  text-align: center;
+}
