@@ -1,0 +1,27 @@
+.weather-card {
+  display: flex;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  text-align: left;
+  background-color: #f0f8ff;
+}
+
+.weather-card__article {
+  flex: 0 32%;
+  width: fit-content;
+  margin-bottom: 1%;
+  margin-top: 0.5em;
+  padding: 0.2em;
+  align-items: center;
+}
+
+.weather-card__img {
+  height: 10em;
+  margin-left: 0.5em;
+}
+
+.weather-card__h4,
+.weather-card__h5,
+.weather-card__h6 {
+  text-transform: capitalize;
+}

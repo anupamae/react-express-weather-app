@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CityList from './components/CityList';
 import './App.css';
 
+export interface ICityItem {
+  id: string,
+  name: string
+}
+
 function App() {
+
+  const [state, setState] = useState(() => {
+    try {
+      const list = JSON.parse(localStorage.getItem('cityList') || '') as ICityItem[];
+      if (list) {
+        return { items: list };
+      }
+    } catch (_) {
+    }
+    return { items: [] };
+  });
+
+  const updateCityList = (list: ICityItem[]) => {
+    setState({ items: list });
+    localStorage.setItem('cityList', JSON.stringify(list));
+  }
+
   return (
     <React.Fragment>
       <Header />
+      <CityList cityList={state.items} updateCityList={updateCityList} />
       <Footer />
     </React.Fragment>
   );
