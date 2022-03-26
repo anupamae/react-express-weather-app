@@ -9,7 +9,7 @@
 .form__fieldset {
   display: flex;
   height: auto;
-  background-color: #D0ECE7;
+  background-color: #85C1E9;
 }
 
 .form__input {
@@ -22,13 +22,13 @@
 
 .form__input:focus {
   outline: none !important;
-  border: 0.15em solid #138D75;
+  border: 0.15em solid #5499C7;
 }
 
 .form__button--submit {
   margin-top: 0.4em;
   margin-left: auto;
-  background-color: #0E6655;
+  background-color: #2471A3;
   cursor: pointer;
   height: 2.5em;
   width: 7em;
@@ -39,10 +39,10 @@
 }
 
 .form__button--submit:hover {
-  background-color: #138D75;
+  background-color: #2980B9;
 }
 
 .form__button--submit:disabled {
-  color: #eff1f3;
+  color: #7F8C8D;
   background-color: #D7DBDD;
 }

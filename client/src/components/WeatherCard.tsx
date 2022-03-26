@@ -22,8 +22,10 @@ const WeatherCard = (props: IWeatherCardProps) => {
 
   const [weather, setWeather] = useState<IWeatherInfo>();
 
+  const apiDomain = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : ''
+
   useEffect(() => {
-    fetch('http://localhost:3001/api/weather?city=' + props.cityItem.name, { method: 'GET' })
+    fetch(`${apiDomain}/api/weather?city=${props.cityItem.name}`, { method: 'GET' })
       .then(response => response.json())
       .then(response => {
         setWeather({

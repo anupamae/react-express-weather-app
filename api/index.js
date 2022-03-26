@@ -1,4 +1,6 @@
+const fs = require('fs');
 const cors = require('cors');
+const path = require('path');
 const dotenv = require('dotenv');
 const express = require('express');
 const fetch = require('node-fetch');
@@ -9,12 +11,16 @@ const bodyParser = require('body-parser');
 dotenv.config();
 
 const app = express();
-const port = 3001
+const port = process.env.PORT || 3001
 
 // Middlewares
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/api/weather', async (req, res) => {
 
@@ -39,9 +45,20 @@ app.get('/api/weather', async (req, res) => {
   }
 });
 
+app.get('/*', (_, res) => {
+  const indexHtml = path.join(__dirname, 'build', 'index.html');
+  fs.access(indexHtml, fs.constants.R_OK, (err) => {
+    if (err) {
+      res.sendStatus(404);
+    } else {
+      res.sendFile(indexHtml);
+    }
+  });
+});
+
 module.exports.app = app;
 
 // See http://www.marcusoft.net/2015/10/eaddrinuse-when-watching-tests-with-mocha-and-supertest.html
 if (!module.parent) {
-  app.listen(port, ()=> console.log(`Server is listening on ${port}`))
+  app.listen(port, () => console.log(`Server is listening on ${port}`))
 }
